@@ -14,6 +14,16 @@ public class Metas {
     @Column(name = "DescriptionMetas", nullable = false, length = 100)
     private String DescriptionMetas;
 
+    public Metas(){
+
+    }
+
+    public Metas(int idMetas, String nameMetas, String descriptionMetas) {
+        this.idMetas = idMetas;
+        this.nameMetas = nameMetas;
+        DescriptionMetas = descriptionMetas;
+    }
+
     public int getIdMetas() {
         return idMetas;
     }
