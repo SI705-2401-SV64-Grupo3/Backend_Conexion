@@ -14,14 +14,19 @@ public class Metas {
     @Column(name = "DescriptionMetas", nullable = false, length = 100)
     private String DescriptionMetas;
 
+    @ManyToOne
+    @JoinColumn(name="usuarioId")
+    private Usuario usuario;
+
     public Metas(){
 
     }
 
-    public Metas(int idMetas, String nameMetas, String descriptionMetas) {
+    public Metas(int idMetas, String nameMetas, String descriptionMetas, Usuario usuario) {
         this.idMetas = idMetas;
         this.nameMetas = nameMetas;
         DescriptionMetas = descriptionMetas;
+        this.usuario = usuario;
     }
 
     public int getIdMetas() {
@@ -46,5 +51,13 @@ public class Metas {
 
     public void setDescriptionMetas(String descriptionMetas) {
         DescriptionMetas = descriptionMetas;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

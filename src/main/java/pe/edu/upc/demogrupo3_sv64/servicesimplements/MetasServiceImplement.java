@@ -24,4 +24,22 @@ public class MetasServiceImplement implements IMetasService {
     public List<Metas> list() {
         return mR.findAll();
     }
+
+    @Override
+    public void delete(int id) {
+        mR.deleteById(id);
+
+    }
+
+    @Override
+    public Metas listId(int id) {
+        return mR.findById(id).orElse(new Metas());
+    }
+
+    @Override
+    public List<String[]> quantityGoalsByUser() {
+        return mR.quantityGoalsByUser();
+    }
+
+
 }

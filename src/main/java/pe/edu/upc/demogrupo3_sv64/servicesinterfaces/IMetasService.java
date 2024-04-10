@@ -9,4 +9,11 @@ public interface IMetasService {
     public void insert(Metas m);
 
     public List<Metas> list();
+
+    public void delete(int id);
+
+    public Metas listId(int id);
+
+
+    public List<String[]> quantityGoalsByUser();
 }

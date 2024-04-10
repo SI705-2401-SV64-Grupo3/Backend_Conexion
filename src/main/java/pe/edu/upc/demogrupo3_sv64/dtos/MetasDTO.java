@@ -1,5 +1,7 @@
 package pe.edu.upc.demogrupo3_sv64.dtos;
 
+import pe.edu.upc.demogrupo3_sv64.entities.Usuario;
+
 public class MetasDTO {
 
     private int idMetas;
@@ -7,6 +9,8 @@ public class MetasDTO {
     private String nameMetas;
 
     private String DescriptionMetas;
+
+    private Usuario usuario;
 
     public int getIdMetas() {
         return idMetas;
@@ -31,4 +35,14 @@ public class MetasDTO {
     public void setDescriptionMetas(String descriptionMetas) {
         DescriptionMetas = descriptionMetas;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }
+
+
