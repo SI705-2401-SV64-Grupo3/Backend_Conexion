@@ -11,9 +11,9 @@ public class UsuarioDTO {
 
     private int idUsuario;
 
-    private String userUsuario;
+    private String username;
 
-    private String passwordUsuario;
+    private String password;
 
     private String nameUsuario;
 
@@ -29,6 +29,8 @@ public class UsuarioDTO {
 
     private String preferencesUsuario;
 
+    private Boolean enabled;
+
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -37,20 +39,20 @@ public class UsuarioDTO {
         this.idUsuario = idUsuario;
     }
 
-    public String getUserUsuario() {
-        return userUsuario;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserUsuario(String userUsuario) {
-        this.userUsuario = userUsuario;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getPasswordUsuario() {
-        return passwordUsuario;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswordUsuario(String passwordUsuario) {
-        this.passwordUsuario = passwordUsuario;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getNameUsuario() {
@@ -107,5 +109,13 @@ public class UsuarioDTO {
 
     public void setPreferencesUsuario(String preferencesUsuario) {
         this.preferencesUsuario = preferencesUsuario;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }

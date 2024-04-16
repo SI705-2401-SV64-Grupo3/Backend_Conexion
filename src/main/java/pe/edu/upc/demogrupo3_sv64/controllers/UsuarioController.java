@@ -2,6 +2,7 @@ package pe.edu.upc.demogrupo3_sv64.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.demogrupo3_sv64.dtos.UsuarioDTO;
 import pe.edu.upc.demogrupo3_sv64.entities.Usuario;
@@ -15,11 +16,24 @@ import java.util.stream.Collectors;
 public class UsuarioController {
     @Autowired
     private IUsuarioService uG;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+
 
     @PostMapping
     public void insertar(@RequestBody UsuarioDTO usuarioDTO){
         ModelMapper m=new ModelMapper();
         Usuario g=m.map(usuarioDTO,Usuario.class);
+        String encodedPassword = passwordEncoder.encode(g.getPassword());
+        g.setPassword(encodedPassword);
+        uG.insert(g);
+    }
+
+    @PutMapping
+    public void modificar(@RequestBody UsuarioDTO usuarioDTO){
+        ModelMapper m = new ModelMapper();
+        Usuario g=m.map(usuarioDTO, Usuario.class);
         uG.insert(g);
     }
     @GetMapping
@@ -29,6 +43,8 @@ public class UsuarioController {
             return m.map(y,UsuarioDTO.class);
         }).collect(Collectors.toList());
     }
+
+
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id){
         uG.delete(id);

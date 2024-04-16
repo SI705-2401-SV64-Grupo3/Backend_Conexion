@@ -3,17 +3,18 @@ package pe.edu.upc.demogrupo3_sv64.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
-@Table
+@Table (name="usuarios")
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
-    @Column (name = "userUsuario", nullable = false, length = 10)
-    private String userUsuario;
-    @Column (name = "passwordUsuario", nullable = false, length = 10)
-    private String passwordUsuario;
+    @Column (name = "username", nullable = false, length = 200)
+    private String username;
+    @Column (name = "password", nullable = false, length = 200)
+    private String password;
     @Column (name = "nameUsuario", nullable = false, length = 50)
     private String nameUsuario;
     @Column (name = "lastnameUsuario", nullable = false, length = 50)
@@ -29,13 +30,18 @@ public class Usuario {
     @Column (name = "preferencesUsuario", nullable = false, length = 200)
     private String preferencesUsuario;
 
+    private Boolean enabled;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id")
+    private List<Rol> roles;
+
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String userUsuario, String passwordUsuario, String nameUsuario, String lastnameUsuario, String mailUsuario, LocalDate birthdateUsuario, String genderUsuario, String descriptionUsuario, String preferencesUsuario) {
+    public Usuario(int idUsuario, String username, String password, String nameUsuario, String lastnameUsuario, String mailUsuario, LocalDate birthdateUsuario, String genderUsuario, String descriptionUsuario, String preferencesUsuario, Boolean enabled, List<Rol> roles) {
         this.idUsuario = idUsuario;
-        this.userUsuario = userUsuario;
-        this.passwordUsuario = passwordUsuario;
+        this.username = username;
+        this.password = password;
         this.nameUsuario = nameUsuario;
         this.lastnameUsuario = lastnameUsuario;
         this.mailUsuario = mailUsuario;
@@ -43,6 +49,8 @@ public class Usuario {
         this.genderUsuario = genderUsuario;
         this.descriptionUsuario = descriptionUsuario;
         this.preferencesUsuario = preferencesUsuario;
+        this.enabled = enabled;
+        this.roles = roles;
     }
 
     public int getIdUsuario() {
@@ -53,20 +61,20 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
 
-    public String getUserUsuario() {
-        return userUsuario;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserUsuario(String userUsuario) {
-        this.userUsuario = userUsuario;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getPasswordUsuario() {
-        return passwordUsuario;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswordUsuario(String passwordUsuario) {
-        this.passwordUsuario = passwordUsuario;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getNameUsuario() {
@@ -123,5 +131,21 @@ public class Usuario {
 
     public void setPreferencesUsuario(String preferencesUsuario) {
         this.preferencesUsuario = preferencesUsuario;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public List<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Rol> roles) {
+        this.roles = roles;
     }
 }
