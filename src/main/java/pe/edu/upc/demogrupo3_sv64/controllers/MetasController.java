@@ -3,6 +3,7 @@ package pe.edu.upc.demogrupo3_sv64.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.demogrupo3_sv64.dtos.MetasByUsuarioDTO;
 import pe.edu.upc.demogrupo3_sv64.dtos.MetasDTO;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/metas")
+@PreAuthorize("hasAuthority('ADMIN') || hasAuthority('HIJO')" )
 public class MetasController {
 
     @Autowired

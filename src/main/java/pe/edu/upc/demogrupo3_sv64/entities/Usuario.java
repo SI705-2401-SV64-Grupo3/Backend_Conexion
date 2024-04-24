@@ -1,5 +1,6 @@
 package pe.edu.upc.demogrupo3_sv64.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -31,6 +32,7 @@ public class Usuario {
     private String preferencesUsuario;
 
     private Boolean enabled;
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "usuario_id")
     private List<Rol> roles;

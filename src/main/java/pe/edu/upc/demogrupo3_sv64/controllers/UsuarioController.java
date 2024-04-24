@@ -2,6 +2,7 @@ package pe.edu.upc.demogrupo3_sv64.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.demogrupo3_sv64.dtos.UsuarioDTO;
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/usuario")
+@PreAuthorize("hasAuthority('ADMIN')")
 public class UsuarioController {
     @Autowired
     private IUsuarioService uG;
