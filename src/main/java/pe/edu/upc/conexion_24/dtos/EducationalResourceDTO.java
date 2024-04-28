@@ -1,10 +1,5 @@
 package pe.edu.upc.conexion_24.dtos;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import pe.edu.upc.conexion_24.entities.Users;
-
 public class EducationalResourceDTO {
     private Long id;
     private String ResourceType;

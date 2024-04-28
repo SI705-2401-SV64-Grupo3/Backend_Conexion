@@ -1,14 +1,8 @@
 package pe.edu.upc.conexion_24.dtos;
 
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import pe.edu.upc.conexion_24.entities.Users;
-
-public class RoleDTO {
+public class SuggestionDTO {
     private Long id;
-
-    private String rol;
-
+    private String Content;
     private Users user;
 
     public Long getId() {
@@ -19,12 +13,12 @@ public class RoleDTO {
         this.id = id;
     }
 
-    public String getRol() {
-        return rol;
+    public String getContent() {
+        return Content;
     }
 
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setContent(String content) {
+        Content = content;
     }
 
     public Users getUser() {
