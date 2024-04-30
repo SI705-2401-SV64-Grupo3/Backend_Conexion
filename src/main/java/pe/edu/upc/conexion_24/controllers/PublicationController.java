@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.conexion_24.dtos.LikeByUsersDTO;
 import pe.edu.upc.conexion_24.dtos.PublicationByUsersDTO;
 import pe.edu.upc.conexion_24.dtos.PublicationDTO;
 import pe.edu.upc.conexion_24.entities.Publication;
@@ -43,6 +44,20 @@ public class PublicationController {
             PublicationByUsersDTO dto = new PublicationByUsersDTO();
             dto.setName(columna[0]);
             dto.setPublicationByUser(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    @GetMapping("/likesusuarios")
+    public List<LikeByUsersDTO> likes() {
+        List<String[]> filaLista = pS.LikesByUser();
+        List<LikeByUsersDTO> dtoLista = new ArrayList<>();
+
+        for (String[] columna : filaLista) {
+            LikeByUsersDTO dto = new LikeByUsersDTO();
+            dto.setName(columna[0]);
+            dto.setMostLikesUser(Integer.parseInt(columna[1]));
             dtoLista.add(dto);
         }
         return dtoLista;

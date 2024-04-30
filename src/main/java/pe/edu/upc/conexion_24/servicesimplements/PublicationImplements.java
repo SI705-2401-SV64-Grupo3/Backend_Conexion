@@ -37,4 +37,9 @@ public class PublicationImplements implements PublicationService {
     public List<String[]> PublicationByUser() {
         return pR.PublicationByUser();
     }
+
+    @Override
+    public List<String[]> LikesByUser() {
+        return pR.LikesByUser();
+    }
 }

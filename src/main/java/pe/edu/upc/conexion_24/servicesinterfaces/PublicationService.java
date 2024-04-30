@@ -14,4 +14,6 @@ public interface PublicationService {
     public Publication listId(Long id);
 
     public List<String[]> PublicationByUser();
+
+    public List<String[]> LikesByUser();
 }

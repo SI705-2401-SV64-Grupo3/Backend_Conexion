@@ -16,4 +16,15 @@ public interface PublicationRepository extends JpaRepository<Publication, Long> 
             "                       group by u.name\n" +
             "\t\t\t\t\t   ORDER BY COUNT(*) DESC;",nativeQuery = true)
     public List<String[]> PublicationByUser();
+
+    @Query(value = "SELECT u.name as Usuario, p.likes\n" +
+            "FROM users u\n" +
+            "INNER JOIN publication p ON u.id = p.user_id\n" +
+            "INNER JOIN (\n" +
+            "    SELECT user_id, MAX(likes) AS max_likes\n" +
+            "    FROM publication\n" +
+            "    GROUP BY user_id\n" +
+            ") AS max_likes_per_user ON p.user_id = max_likes_per_user.user_id AND p.likes = max_likes_per_user.max_likes\n" +
+            "ORDER BY u.name",nativeQuery = true)
+    public List<String[]> LikesByUser();
 }
