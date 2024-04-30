@@ -12,4 +12,6 @@ public interface PublicationService {
     public void delete(Long id);
 
     public Publication listId(Long id);
+
+    public List<String[]> PublicationByUser();
 }

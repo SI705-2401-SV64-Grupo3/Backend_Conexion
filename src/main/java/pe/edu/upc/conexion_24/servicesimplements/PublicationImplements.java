@@ -32,4 +32,9 @@ public class PublicationImplements implements PublicationService {
     public Publication listId(Long id) {
         return pR.findById(id).orElse(new Publication());
     }
+
+    @Override
+    public List<String[]> PublicationByUser() {
+        return pR.PublicationByUser();
+    }
 }
